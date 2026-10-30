@@ -1,0 +1,32 @@
+def display_lcd(ph, tds, turbidity):
+
+    lcd.clear()
+    lcd.move_to(0, 0)
+    lcd.putstr("pH:{:.2f}".format(ph))
+
+    lcd.move_to(0, 1)
+    lcd.putstr("TDS:{:.0f} ppm".format(tds))
+
+    sleep(2.5)
+
+    lcd.clear()
+    lcd.move_to(0, 0)
+    lcd.putstr("Turbidity Raw:")
+
+    lcd.move_to(0, 1)
+    lcd.putstr("{:.0f}".format(turbidity))
+
+    sleep(2.5)
+
+    lcd.clear()
+    lcd.move_to(0, 0)
+    lcd.putstr("Water Status:")
+
+    lcd.move_to(0, 1)
+
+    if PH_MIN <= ph <= PH_MAX and tds <= TDS_MAX:
+        lcd.putstr("Within Limits")
+    else:
+        lcd.putstr("Check Water")
+
+    sleep(2.5)
